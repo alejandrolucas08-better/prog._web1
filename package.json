@@ -1,0 +1,22 @@
+{
+  "name": "prog._web1",
+  "version": "1.0.0",
+  "description": "PW1 Exercises",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alejandrolucas08-better/prog._web1.git"
+  },
+  "author": "alejandrolucas0-better",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alejandrolucas08-better/prog._web1/issues"
+  },
+  "homepage": "https://github.com/alejandrolucas08-better/prog._web1#readme",
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}
