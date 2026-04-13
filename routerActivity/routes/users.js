@@ -1,9 +1,20 @@
-var express = require('express');
-var router = express.Router();
+const express = require("express");
+const router = express.Router();
 
-/* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
+router.get("/", (req, res) => {
+  res.redirect("/users/signup");
+});
+
+router.get("/signin", (req, res) => {
+  res.send("<h1>Página de Login (/users/signin)</h1>");
+});
+
+router.get("/signup", (req, res) => {
+  res.send("<h1>Página de Cadastro (/users/signup)</h1>");
+});
+
+router.get("/:userid", (req, res) => {
+  res.send(`<h1>Bem-vindo, usuário: ${req.params.userid}!</h1>`);
 });
 
 module.exports = router;

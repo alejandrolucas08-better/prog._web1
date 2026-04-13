@@ -3,11 +3,23 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const port = 3000;
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var aboutRouter = require('./routes/about');
+var dataRouter = require('./routes/data');
 
 var app = express();
+
+const requestLogger = function (req, res, next) {
+    req.requestTime = new Date().toLocaleString('pt-BR');
+    console.log(`\n[LOG] ${req.requestTime} | Rota acessada: ${req.method} ${req.url}\n`);
+    
+    next();
+};
+
+app.use(requestLogger);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -21,6 +33,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/about', aboutRouter);
+app.use('/data', dataRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -36,6 +50,11 @@ app.use(function(err, req, res, next) {
   // render the error page
   res.status(err.status || 500);
   res.render('error');
+});
+
+app.listen(port, () => {
+    console.log(`Example app listening on port ${port}`);
+    console.log('Pressione Ctrl+C para encerrar.');
 });
 
 module.exports = app;
